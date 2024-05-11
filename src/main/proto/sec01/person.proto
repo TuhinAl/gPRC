@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.altuhin.models.sec01";
+package sec01;
+
+message Person {
+  //the protobuf expects some field number, we simply give some field number
+  string name = 1;
+  int32 age = 2;
+}
