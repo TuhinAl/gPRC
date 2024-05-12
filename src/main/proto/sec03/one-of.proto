@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_package = "com.altuhin.models.sec03";
+option java_multiple_files = true;
+package sec03;
+
+message Email{
+  string address = 1;
+  string password = 2;
+}
+message Phone{
+  int32 number = 3;
+  int32 code = 1;
+}
+message Credentials{
+oneof login_type{
+  Email email = 1;
+  Phone phone = 2;
+}
+}
+
