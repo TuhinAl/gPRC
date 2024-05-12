@@ -14,3 +14,7 @@ These are the basic building blocks in proto using which we can model our messag
 we can create further complex message if you want.
 
 Serialization is super simple with the proto generated source
+
+### Important: Proto will replace JSON. Proto represent the data which we are planning to send to another service.
+
+One of the best feature of Proto is it doesnt support NULL.

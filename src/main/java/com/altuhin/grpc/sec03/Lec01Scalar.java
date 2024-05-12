@@ -1,6 +1,5 @@
 package com.altuhin.grpc.sec03;
 
-import com.altuhin.grpc.seco2.ProtoDemo;
 import com.altuhin.models.sec03.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

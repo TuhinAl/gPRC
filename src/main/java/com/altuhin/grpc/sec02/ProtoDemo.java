@@ -1,6 +1,5 @@
-package com.altuhin.grpc.seco2;
+package com.altuhin.grpc.sec02;
 
-import com.altuhin.models.sec01.PersonOuterClass;
 import com.altuhin.models.sec02.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
