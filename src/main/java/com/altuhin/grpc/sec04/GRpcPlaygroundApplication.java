@@ -1,4 +1,4 @@
-package com.altuhin.grpc;
+package com.altuhin.grpc.sec04;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

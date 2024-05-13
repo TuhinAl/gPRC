@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.altuhin.models.sec05.v1";
+option java_multiple_files = true;
+package sec05;
+
+message Television {
+  string  brand = 1;
+  string  year = 2;
+}
