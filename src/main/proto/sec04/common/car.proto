@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package = "com.altuhin.models.sec04.common";
+option java_multiple_files = true;
+package sec04.common;
+
+message Car{
+  string make = 1;
+  string model = 2;
+  int32 year = 3;
+  WeekDay weekDay = 4;
+}
+
+enum WeekDay {
+  // first enum value must be 0 in proto3.
+    MONDAY = 0;
+    TUESDAY = 1;
+    WEDNESDAY = 2;
+    THURSDAY = 3;
+    FRIDAY = 4;
+    SATURDAY = 5;
+    SUNDAY = 6;
+
+}
+

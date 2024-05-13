@@ -24,3 +24,6 @@ one server S1 calling another server S2, that S2 server will return response, th
 it could be SUCCESS response or it could be FAILURE response. I will be getting one of these types. that is why it is 
 called oneOf.
 "oneOf" behavior can also be achieved with latest version of java using sealed class and pattern matching.
+
+### proto message format changes
+![alt text](images/pb/protoMsgFormatChanges.png)
