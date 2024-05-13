@@ -5,13 +5,8 @@ package sec05.v3;
 
 message Television {
   string  brand = 1;
-
-  // whenever we removed something we will reserved this.
-
-  reserved 2;
-  reserved "year", "model";
+  int32 price = 2;
   Type type = 3;
-  int32 price = 4;
 }
 
 enum Type{
