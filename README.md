@@ -51,3 +51,55 @@ NB: There is a problem, server like Netty is not support HTTP2 that is why Googl
 
 ![alt text](images/unary/http1_ss5.png)<br>
 ![alt text](images/unary/unary_ss7.png)<br>
+
+BankServiceGrpc uses void method, this is actually use reactive programming, where responseObserver keep emitting values
+when we want. this is not typical Request and Response base service. it is like single request and multiple response.
+
+```
+@Override
+public void getAccountBalance(BalanceCheckRequest request, StreamObserver<AccountBalance> responseObserver) {
+ 
+ }
+
+```
+![alt text](images/unary/stream_observer_ss8.png)<br>
+
+we have created the service class now it has to be registered with the gRPC server. For that I've created one package called
+'com.altuhin.grpc.common'
+
+
+```
+public class BankService extends BankServiceGrpc.BankServiceImplBase {
+    @Override
+    public void getAccountBalance(BalanceCheckRequest request, StreamObserver<AccountBalance> responseObserver) {
+        int accountNumber = request.getAccountNumber();
+        AccountBalance accountBalance = AccountBalance.newBuilder()
+                .setBalance(accountNumber * 10)
+                .build();
+
+        responseObserver.onNext(accountBalance);
+        responseObserver.onCompleted();
+
+    }
+}
+
+
+
+
+
+public class GrpcServer {
+    public static void main(String[] args) throws Exception {
+        Server server = ServerBuilder.forPort(6565)
+                .addService(new BankService())
+                .build();
+
+        server.start();
+        server.awaitTermination();
+    }
+}
+
+
+```
+by default HTTP2 requires secured connection, when a client is interacts with server sung HTTP2, it assumes that server
+is using the secured connection. so we have to explicitly say to postman to disable TLS.
+![alt text](images/unary/disable_tls_ss9.png)<br>

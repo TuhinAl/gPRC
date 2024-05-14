@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sec06;
+
+option java_multiple_files = true;
+option java_package = "com.altuhin.models.sec06";
+
+//understanding Communication pattern -> Unary
+
+message BalanceCheckRequest {
+  int32 account_number = 1;
+}
+
+message AccountBalance {
+  int32 account_number = 1;
+  int32 balance = 2;
+}
+
+service BankService {
+  //what are the method the service is going to expose
+  // there is a bank service and it is exposes this method -GetAccountBalance and expect BalanceCheckRequest param and will return AccountBalance
+  rpc GetAccountBalance( BalanceCheckRequest) returns (AccountBalance);
+
+}
