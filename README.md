@@ -102,4 +102,16 @@ public class GrpcServer {
 ```
 by default HTTP2 requires secured connection, when a client is interacts with server sung HTTP2, it assumes that server
 is using the secured connection. so we have to explicitly say to postman to disable TLS.
+
 ![alt text](images/unary/disable_tls_ss9.png)<br>
+
+Client Server communication:
+proto actually also generate some Client code for us to invoke that method.
+What are we have going to do?
+Here, we have a server builder to build te server. Then we added the service to expose the API.
+
+Similarly, we have something called a channel builder in the client side to build a channel. so the channel is nothing but a connection
+between the client and the server. and Stub is nothing but a fake service. and proto generate this Stub for us.
+
+![alt text](images/unary/client_server_comm_ss10.png)<br>
+
