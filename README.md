@@ -65,7 +65,7 @@ public void getAccountBalance(BalanceCheckRequest request, StreamObserver<Accoun
 ![alt text](images/unary/stream_observer_ss8.png)<br>
 
 we have created the service class now it has to be registered with the gRPC server. For that I've created one package called
-'com.altuhin.grpc.common'
+`com.altuhin.grpc.common`
 
 
 ```
@@ -79,13 +79,8 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
         responseObserver.onNext(accountBalance);
         responseObserver.onCompleted();
-
     }
 }
-
-
-
-
 
 public class GrpcServer {
     public static void main(String[] args) throws Exception {
@@ -98,7 +93,6 @@ public class GrpcServer {
     }
 }
 
-
 ```
 by default HTTP2 requires secured connection, when a client is interacts with server sung HTTP2, it assumes that server
 is using the secured connection. so we have to explicitly say to postman to disable TLS.
@@ -107,7 +101,7 @@ is using the secured connection. so we have to explicitly say to postman to disa
 
 Client Server communication:
 proto actually also generate some Client code for us to invoke that method.
-What are we have going to do?
+What are we going to do?
 Here, we have a server builder to build te server. Then we added the service to expose the API.
 
 Similarly, we have something called a channel builder in the client side to build a channel. so the channel is nothing but a connection
@@ -115,3 +109,45 @@ between the client and the server. and Stub is nothing but a fake service. and p
 
 ![alt text](images/unary/client_server_comm_ss10.png)<br>
 
+## Channel and Stub
+    Channel:
+--------------
+    1. Channel should be mostly private
+    2. we create once in the beginning of the application
+    3. It is "managed"
+
+    Stub
+-----------
+    1. stub uses channel, create once and inject wherever we need
+    2. Singleton/ @Bean
+    3. It is thread safe
+
+![alt text](images/unary/channel_and_stub_ss11.png)<br>
+
+## Blocking vs Async Stub
+
+![alt text](images/unary/blocking_vs_async_stub_ss12.png)<br>
+
+## How Async Stub works
+-----
+Synchronous blocking client very simple and straightforward, but when we use asynchronous client we have to attach a listener
+so that when the response come back, maybe after one second, maybe after 10s, that can be executed.
+Steps: Stub will send the request to the server via Client -> Server will receive the request -> Server will pass the request to 
+Service class. also ot will pass the stream observer implementation of the service class  -> Server will give TWO parameter
+to the service method, one is the Request, second one is the stream observer implementation -> using stream
+observer, via OnNext() method we will give the response back-> server take the response -> forward back to client -> client receive the 
+response via onNext() method.
+
+![alt text](images/unary/async_stub_ss13.png)<br>
+
+#### Listenable Future
+var stub = BankServiceGrpc.newFutureStub(channel);
+
+Note:
+newFutureStub() and newBlockingStub(): support unary and  server streaming
+newStub()- asynchronous: support all 4 communication pattern
+
+
+![alt text](images/unary/listenable_future.png)<br>
+
+#### Abstract Test
