@@ -150,4 +150,16 @@ newStub()- asynchronous: support all 4 communication pattern
 
 ![alt text](images/unary/listenable_future.png)<br>
 
-#### Abstract Test
+# Server Streaming 
+#### Client will send on request where Server might send multiple response
+#### Streaming possible Outputs
+![alt text](images/server_streaming/possible_outputs.png)<br>
+
+
+# Client Streaming 
+#### Client will send on stream of request where Server return response
+
+#### Why we return Stream Observer?
+![alt text](images/server_streaming/client_streaming_ss1.png)<br>
+
+

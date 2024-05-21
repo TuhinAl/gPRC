@@ -1,3 +1,5 @@
+
+//========================================= Unary ====================================================================
 syntax = "proto3";
 
 package sec06;
@@ -16,9 +18,44 @@ message AccountBalance {
   int32 balance = 2;
 }
 
+//rpc method for Unary
+
 service BankService {
+
+  //===================== Unary =====================
   //what are the method the service is going to expose
   // there is a bank service and it is exposes this method -GetAccountBalance and expect BalanceCheckRequest param and will return AccountBalance
   rpc GetAccountBalance( BalanceCheckRequest) returns (AccountBalance);
 
+
+
+  //===================== Server Streaming =====================
+  //rpc method for Server Streaming
+  rpc Withdraw(WithdrawRequest) returns (stream Money);
+
+
+  //===================== Client Streaming =====================
+  //rpc method for Client Streaming
+  rpc Deposit(stream DepositRequest) returns (stream AccountBalance);
+
 }
+
+
+message WithdrawRequest {
+  int32 account_number = 1;
+  int32 amount = 2;
+}
+
+message Money {
+  int32 amount = 1;
+}
+
+message DepositRequest {
+  oneof request{
+    int32 account_number = 1;
+    Money money = 2;
+  }
+}
+
+
+
