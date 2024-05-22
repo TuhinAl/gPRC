@@ -1,7 +1,8 @@
 package com.altuhin.grpc.common;
 
-import com.altuhin.grpc.sec06.BankService;
+
 import com.altuhin.grpc.sec06.TransferService;
+import com.altuhin.grpc.sec09.BankService;
 
 /**
  *  a simple class to start the server with specific services for demo purpose.

@@ -173,3 +173,8 @@ for every any incoming message, send back any number outgoing message
 Client cannot keep on making moves without knowing the other side move (Server response)
 
 ![alt text](images/server_streaming/interactive_streaming.png)<br>
+
+
+# Input Validation/Error Handling
+[Status Code](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md) <br>
+[Status Code Proto Example](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto)

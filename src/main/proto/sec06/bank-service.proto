@@ -73,8 +73,6 @@ message DepositRequest {
     int32 account_number = 1;
     Money money = 2;
   }
-
-
 }
 
 
