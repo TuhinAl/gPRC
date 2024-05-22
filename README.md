@@ -189,3 +189,9 @@ How to show Application Specific Error messages to the Client in a Type safe man
 
 ### Error Message via OneOf
 ![alt text](images/input_validation/error_response_oneOf_ss5.png)<br>
+
+# Deadline
+Deadline is nothing but a timeout configuration. 
+
+![alt text](images/deadline/deadline_ss1.png)<br>
+![alt text](images/deadline/deadline_ss2.png)<br>
