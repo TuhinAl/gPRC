@@ -1,4 +1,3 @@
-
 //========================================= Unary ====================================================================
 syntax = "proto3";
 
@@ -25,7 +24,7 @@ service BankService {
   //===================== Unary =====================
   //what are the method the service is going to expose
   // there is a bank service and it is exposes this method -GetAccountBalance and expect BalanceCheckRequest param and will return AccountBalance
-  rpc GetAccountBalance( BalanceCheckRequest) returns (AccountBalance);
+  rpc GetAccountBalance(BalanceCheckRequest) returns (AccountBalance);
 
 
 
@@ -40,6 +39,25 @@ service BankService {
 
 }
 
+//===================== Bi-Directional Streaming =====================
+message TransferRequest{
+  int32 from_account = 1;
+  int32 to_account = 2;
+  int32 amount = 3;
+}
+enum TransferStatus{
+  REJECTED = 0;
+  COMPLETED = 1;
+}
+message TransferResponse{
+  TransferStatus status = 1;
+  AccountBalance from_account = 2;
+  AccountBalance to_account = 3;
+}
+
+service TransferService {
+  rpc Transfer(stream TransferRequest) returns (stream TransferResponse);
+}
 
 message WithdrawRequest {
   int32 account_number = 1;
@@ -55,6 +73,8 @@ message DepositRequest {
     int32 account_number = 1;
     Money money = 2;
   }
+
+
 }
 
 

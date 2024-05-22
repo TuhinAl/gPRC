@@ -159,7 +159,17 @@ newStub()- asynchronous: support all 4 communication pattern
 # Client Streaming 
 #### Client will send on stream of request where Server return response
 
-#### Why we return Stream Observer?
+#### Why we return Stream Observer?f
 ![alt text](images/server_streaming/client_streaming_ss1.png)<br>
 
+# Bidirectional Streaming 
+![alt text](images/server_streaming/bi_directional_streaming.png)<br>
 
+#### Independent Stream
+for every one incoming message, send back any number outgoing message
+for every any incoming message, send back any number outgoing message
+
+#### Interactive Stream
+Client cannot keep on making moves without knowing the other side move (Server response)
+
+![alt text](images/server_streaming/interactive_streaming.png)<br>
