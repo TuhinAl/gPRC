@@ -178,3 +178,14 @@ Client cannot keep on making moves without knowing the other side move (Server r
 # Input Validation/Error Handling
 [Status Code](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md) <br>
 [Status Code Proto Example](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto)
+
+
+### Trailer Metadata
+![alt text](images/input_validation/trailer_metadata.png)<br>
+![alt text](images/input_validation/trailer_metadata_ss2.png)<br>
+![alt text](images/input_validation/trailer_metadata_ss3.png)<br>
+
+How to show Application Specific Error messages to the Client in a Type safe manner.
+
+### Error Message via OneOf
+![alt text](images/input_validation/error_response_oneOf_ss5.png)<br>
