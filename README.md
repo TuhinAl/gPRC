@@ -195,3 +195,23 @@ Deadline is nothing but a timeout configuration.
 
 ![alt text](images/deadline/deadline_ss1.png)<br>
 ![alt text](images/deadline/deadline_ss2.png)<br>
+
+Did not complete this part
+
+# Channel and Load Balancing
+Channel is an object to set up the connection with the remote server.
+
+![alt text](images/channel_loadbalancing/channel_ss1.png)<br>
+![alt text](images/channel_loadbalancing/channel_ss2.png)<br>
+![alt text](images/channel_loadbalancing/channel_ss3.png)<br>
+![alt text](images/channel_loadbalancing/channel_ss4.png)<br>
+
+#### Persistent Connection:
+![alt text](images/channel_loadbalancing/persistent_connection.png)<br>
+
+#### Lazy Channel Creation:
+Channel is created Lazily.
+
+#### Server KeepAlive Configuration
+![alt text](images/channel_loadbalancing/keep_alive_config.png)<br>
+![alt text](images/channel_loadbalancing/nginx_lb_ss5.png)<br>
