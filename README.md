@@ -215,3 +215,43 @@ Channel is created Lazily.
 #### Server KeepAlive Configuration
 ![alt text](images/channel_loadbalancing/keep_alive_config.png)<br>
 ![alt text](images/channel_loadbalancing/nginx_lb_ss5.png)<br>
+
+## Call Options / Interceptor / Metadata / Context
+
+#### Call Option
+![alt text](images/call_option_interceptor_metadata_context/call_option_ss2.png)<br>
+
+#### Gzip Compression
+![alt text](images/call_option_interceptor_metadata_context/gzip_ss1.png)<br>
+
+#### Call Option - Gzip
+![alt text](images/call_option_interceptor_metadata_context/call_option_ss2.png)<br>
+
+#### Interceptors
+![alt text](images/call_option_interceptor_metadata_context/interceptor_ss3.png)<br>
+
+Here, Concern means Requirements.
+
+![alt text](images/call_option_interceptor_metadata_context/cross_cutting_concern.png)<br>
+
+
+
+
+#### 148 Lecture
+
+![alt text](images/call_option_interceptor_metadata_context/cmc_ss1.png)<br>
+
+CallOptions: so CallOptions is useful to pass some information from the service class to the interceptor.
+Metadata: Metadata is nothing but header. So if you want to attach some header information in the request right.
+Maybe server might be expecting some header.So if you want to attach some metadata, some information in the request 
+then the interceptor is a great place for us to do.
+
+Then here we have server interceptor.So at the Server Interceptor we should be able to extract the metadata 
+information. And if you want to do some validation etc. the server interceptor might be a great place.
+
+Context:Context will be useful to pass some information from the interceptor to the service classes.
+Need to ask chatGPT about CallOptions(few options like Deadline, Compressions), Metadata, Context, Interceptor.
+
+### Metadata / Client API Key (Interceptor Demo)
+
+![alt text](images/call_option_interceptor_metadata_context/api_key1.png)<br>

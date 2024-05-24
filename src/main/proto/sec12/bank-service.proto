@@ -1,0 +1,73 @@
+//========================================= Unary ====================================================================
+syntax = "proto3";
+
+package sec12;
+
+option java_multiple_files = true;
+option java_package = "com.altuhin.models.sec12";
+
+//understanding Communication pattern -> Unary
+
+message BalanceCheckRequest {
+  int32 account_number = 1;
+}
+
+message AccountBalance {
+  int32 account_number = 1;
+  int32 balance = 2;
+}
+
+//rpc method for Unary
+
+service BankService {
+
+  // Unary
+  //what are the method the service is going to expose
+  // there is a bank service and it is exposes this method -GetAccountBalance and expect BalanceCheckRequest param and will return AccountBalance
+  rpc GetAccountBalance(BalanceCheckRequest) returns (AccountBalance);
+
+
+  // Server Streaming
+  //rpc method for Server Streaming
+  rpc Withdraw(WithdrawRequest) returns (stream Money);
+
+}
+
+
+message TransferRequest{
+  int32 from_account = 1;
+  int32 to_account = 2;
+  int32 amount = 3;
+}
+enum TransferStatus{
+  REJECTED = 0;
+  COMPLETED = 1;
+}
+message TransferResponse{
+  TransferStatus status = 1;
+  AccountBalance from_account = 2;
+  AccountBalance to_account = 3;
+}
+
+service TransferService {
+  rpc Transfer(stream TransferRequest) returns (stream TransferResponse);
+}
+
+message WithdrawRequest {
+  int32 account_number = 1;
+  int32 amount = 2;
+}
+
+message Money {
+  int32 amount = 1;
+}
+
+message DepositRequest {
+  oneof request{
+    int32 account_number = 1;
+    Money money = 2;
+  }
+}
+
+
+
