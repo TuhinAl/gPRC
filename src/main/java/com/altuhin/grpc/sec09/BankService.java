@@ -17,6 +17,8 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     private static final Logger log = LoggerFactory.getLogger(BankService.class);
 
     // Unary
+
+    //Seems Like Controller
     @Override
     public void getAccountBalance(BalanceCheckRequest request, StreamObserver<AccountBalance> responseObserver) {
         validateAccount(request.getAccountNumber()).map(Status::asRuntimeException)
@@ -27,6 +29,7 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
     }
 
+    // Seems like Service in spring boot
     private void sendAccountBalance(BalanceCheckRequest request, StreamObserver<AccountBalance> responseObserver) {
         int accountNumber = request.getAccountNumber();
         Integer balance = getBalance(accountNumber);
